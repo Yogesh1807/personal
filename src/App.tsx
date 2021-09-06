@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import { Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+
+import { defaultTheme } from "./theme/theme";
+import history from "./utils/constants";
+// import logo from "./logo.svg";
+import "./App.css";
+
+const Private = lazy(() => import("./routeModule/private"));
+const Public = lazy(() => import("./routeModule/public"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <Router history={history}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route exact path="/app/*" component={Private} />
+            <Route exact path="/" component={Public} />
+          </Switch>
+        </Suspense>
+      </Router>
+    </ThemeProvider>
   );
 }
 
