@@ -86,6 +86,18 @@ const Wrapper = styled.section`
     padding: 0 60px;
     float: left;
   }
+  .skillSummary{
+    height: auto;
+    
+    margin: 20px;
+    padding: 16px 20px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px 0px red;
+  }
+  .skillWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 const Header = styled.div`
@@ -334,8 +346,14 @@ const Blog = (props) => {
     switch (param) {
       case "skils":
         return (
-          <div id="skils" className="summary">
+          <div id="skils" className="skillSummary">
             <h2 className="summaryTitle">Skils</h2>
+            <div className="skillWrapper">
+              <div>Col one</div>
+              <div>Col Two</div>
+              <div>Col Three</div>
+              <div>Col Four</div>
+            </div>
           </div>
         );
       case "experience":
@@ -361,7 +379,6 @@ const Blog = (props) => {
                 experience located in Pune India. I have a serious passion for
                 UI effects, animations and creating intuitive, dynamic user
                 experiences. <br />
-                
                 Well-organised person, problem solver, independent employee with
                 high attention to detail. Interested in the entire frontend
                 spectrum and working on ambitious projects with positive people.
