@@ -1,0 +1,2 @@
+(this.webpackJsonppersonal=this.webpackJsonppersonal||[]).push([[4],{42:function(e,t,c){"use strict";c.r(t);c(0);var n=c(2),s=function(e){return Object(n.jsx)("h1",{children:"Welcome to Dashboard"})},r=c(34),a=c(10);t.default=function(){return Object(n.jsx)(r.b,{history:a.a,children:Object(n.jsx)(r.c,{children:Object(n.jsx)(r.a,{path:"/Dashboard",exact:!0,component:s})})})}}}]);
+//# sourceMappingURL=4.dce60366.chunk.js.map

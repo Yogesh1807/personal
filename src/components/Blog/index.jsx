@@ -5,6 +5,7 @@ import styled from "styled-components";
 import profile from "../../assets/profile.png";
 // import Button from "../Button";
 import { LogoSVG } from "../../utils/svgComponent";
+import { RangeSlider } from "../rangeSlider";
 
 // Create a Title component that'll render an <h1> tag with some styles
 const Title = styled.h1`
@@ -61,6 +62,15 @@ const Wrapper = styled.section`
     border-radius: 5px;
     box-shadow: 1px 2px 3px 0px red;
   }
+  .componentSummary {
+    display: flex;
+    height: auto;
+    margin: 10px;
+    padding: 0px;
+    text-align: justify;
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px 0px red;
+  }
   .summaryData > p {
     margin: 0;
   }
@@ -86,9 +96,9 @@ const Wrapper = styled.section`
     padding: 0 60px;
     float: left;
   }
-  .skillSummary{
+  .skillSummary {
     height: auto;
-    
+
     margin: 20px;
     padding: 16px 20px;
     border-radius: 5px;
@@ -97,6 +107,18 @@ const Wrapper = styled.section`
   .skillWrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+  }
+  .sidebar {
+    width: 20%;
+  }
+  .contentBox {
+    width: 80%;
+  }
+  .boxTitle {
+    margin: 10px 0;
+    text-transform: capitalize;
+    color: #717db3;
+    text-align: center;
   }
 `;
 
@@ -156,7 +178,7 @@ const Header = styled.div`
   .navbar ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 0fr);
+    grid-template-columns: repeat(5, 0fr);
     grid-gap: 40px;
     justify-self: end;
     text-transform: uppercase;
@@ -338,6 +360,52 @@ const LogoDiv = styled.div`
   text-align: center;
 `;
 
+const slides = [
+  {
+    id: 1,
+    isVideo: true,
+    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+    // src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 2,
+    isVideo: false,
+    src: "https://i.pinimg.com/originals/2c/1d/b1/2c1db1248b475e8ea7ff1bb534fa8884.jpg",
+    // src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 3,
+    isVideo: false,
+    src: "https://wallpaperaccess.com/full/3985814.jpg",
+    // src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 4,
+    isVideo: false,
+    src: "https://i0.wp.com/zeeoii.com/wp-content/uploads/2020/08/Amazing-Nature-4K-Wallpapper-3840-x-2160-8.jpg?resize=1536%2C864&ssl=1",
+    // src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 5,
+    isVideo: false,
+    src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 6,
+    isVideo: false,
+    src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 7,
+    isVideo: false,
+    src: "https://images.unsplash.com/photo-1422568374078-27d3842ba676?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  },
+  {
+    id: 8,
+    isVideo: false,
+    src: "https://i.picsum.photos/id/243/536/354.jpg?hmac=LfqhpnBszg-pS8BQHemVFexSLyoiFYP8Pw14oAiPpE4",
+  },
+];
 const Blog = (props) => {
   const [active, setActive] = useState(false);
   const [blogContent, setBlogContent] = useState("about");
@@ -368,6 +436,25 @@ const Blog = (props) => {
             <h2 className="summaryTitle">Contact</h2>
           </div>
         );
+      case "component":
+        return (
+          <div id="contact" className="componentSummary">
+            <div className="sidebar">
+              <h2 className="boxTitle">component</h2>
+              <ul>
+                <li>RangeSlider</li>
+              </ul>
+            </div>
+            <div className="contentBox">
+              <RangeSlider
+                autoSlideDelay={2000}
+                autoSlide={false}
+                media={slides}
+                slideRange={3}
+              />
+            </div>
+          </div>
+        );
       default:
         return (
           <div id="summary" className="summary">
@@ -394,7 +481,7 @@ const Blog = (props) => {
     }
   };
 
-  const menuList = ["about", "skils", "experience", "contact"];
+  const menuList = ["about", "skils", "experience", "contact", "component"];
 
   return (
     <Wrapper>
